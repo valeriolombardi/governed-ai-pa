@@ -1,5 +1,7 @@
 # PICEE-PA - Governed AI Execution for Public Administration
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22229330.svg)](https://doi.org/10.5281/zenodo.22229330)
+
 **Policy -> Identity -> Capability -> Execution -> Evidence**
 
 PICEE-PA is an independent, vendor-neutral **design proposal / public-administration application profile** for governing AI-initiated actions. It connects administrative authorization (purpose, process, delegation and accountability) to technical authorization (identity, capabilities, policy enforcement and runtime controls), one action at a time.
@@ -43,15 +45,16 @@ Two proposed interoperable artefacts are included:
 | L2 | Reversible state change | narrow capability + risk-based approval + recovery |
 | L3 | Consequential/rights/finance/irreversible | meaningful human authorization by default + strong evidence |
 
-## DOI
-
-**DOI will be added after the first Zenodo-archived GitHub release.** Do not insert a placeholder DOI into citations.
-
-After Zenodo archives `v1.0.0`, update this README and `CITATION.cff` with the DOI. Keep the original `v1.0.0` tag immutable; if you want the DOI embedded in a later archived snapshot, publish a follow-up patch release.
-
 ## Citation
 
-GitHub will expose **Cite this repository** from `CITATION.cff`. A DOI-based citation will be added after Zenodo ingestion.
+If you use PICEE-PA, its specification, schemas or reference implementation,
+please cite the archived release:
+
+> Lombardi, V. (2026). *PICEE-PA: Governed AI Execution for Public Administration* (v1.0.0). Zenodo. DOI: 10.5281/zenodo.22229330
+
+DOI: **10.5281/zenodo.22229330**
+
+Citation metadata are also available in [`CITATION.cff`](CITATION.cff).
 
 ## Independence
 
