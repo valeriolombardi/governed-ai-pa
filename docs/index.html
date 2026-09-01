@@ -1,1 +1,607 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PICEE-PA | Governed AI Execution for Public Administration</title><meta name="description" content="PICEE-PA is a vendor-neutral public-administration application profile connecting administrative and technical authorization for AI-initiated actions."><meta name="author" content="Valerio Lombardi"><style>body{margin:0;font-family:system-ui,Arial,sans-serif;color:#102A43;background:#f7fafc;line-height:1.6}.hero{background:#102A43;color:white;padding:60px 7%}.hero h1{font-size:48px;margin:0}.wrap{max-width:1050px;margin:auto;padding:40px 6%}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}.card{background:white;border:1px solid #d9e2ec;border-radius:12px;padding:18px}.callout{border-left:5px solid #1f6feb;background:#eaf2f8;padding:20px;font-weight:650}a{color:#1f6feb}footer{background:#eaf2f8;padding:24px 7%}code{background:#edf2f7;padding:2px 5px;border-radius:4px}</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"PICEE-PA: Governed AI Execution for Public Administration","author":{"@type":"Person","name":"Valerio Lombardi","sameAs":["https://orcid.org/0009-0006-3949-6228","https://github.com/valeriolombardi"]},"datePublished":"2026-09-01"}</script></head><body><section class="hero"><p>INDEPENDENT DESIGN PROPOSAL · v1.0</p><h1>PICEE-PA</h1><h2>Governed AI Execution for Public Administration</h2><p><strong>Policy -> Identity -> Capability -> Execution -> Evidence</strong></p></section><main class="wrap"><div class="callout">AI-generated intention is not authority to act. Significant actions should be explicitly authorized, bounded, enforceable and reconstructible.</div><h2>Contribution</h2><p>PICEE-PA does not claim to invent policy engines, agent identity, sandboxing or audit. It proposes a vendor-neutral public-administration application profile that connects <strong>administrative authorization</strong> (purpose, process, delegation, accountability) to <strong>technical authorization</strong> (identity, capability, policy enforcement and runtime controls) for each AI-initiated action.</p><h2>Architecture</h2><p><img src="assets/picee-pa-architecture.svg" alt="PICEE-PA architecture" style="max-width:100%"></p><h2>Five layers</h2><div class="grid"><div class="card"><h3>Policy</h3><p>Purpose, process, applicable rules, constraints and risk.</p></div><div class="card"><h3>Identity</h3><p>Requester, agent/workload, sponsor and delegation chain.</p></div><div class="card"><h3>Capability</h3><p>Bounded action, resource, data scope and budgets.</p></div><div class="card"><h3>Execution</h3><p>Fail-closed enforcement, approvals, isolation and recovery.</p></div><div class="card"><h3>Evidence</h3><p>Attributable policy decision, actual action, outcome and provenance.</p></div></div><h2>AEE and AEB</h2><p><strong>AEE</strong> is the proposed pre-execution Administrative Execution Envelope. <strong>AEB</strong> is the proposed post-execution Administrative Evidence Bundle.</p><h2>Downloads</h2><p><a href="downloads/PICEE-PA_Final_v1.0_IT.pdf">Paper (Italian PDF)</a> · <a href="https://github.com/valeriolombardi/governed-ai-pa">GitHub repository</a></p><h2>Author</h2><p><strong>Valerio Lombardi</strong> · Computer Engineer · Independent Researcher · ORCID <a href="https://orcid.org/0009-0006-3949-6228">0009-0006-3949-6228</a></p><p><small>Independent personal research. The views expressed are solely those of the author and do not represent any organisation, institution, or employer.</small></p></main><footer>© 2026 Valerio Lombardi · PICEE-PA v1.0</footer></body></html>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>
+    PICEE-PA | Governed AI Execution for Public Administration
+  </title>
+
+  <meta
+    name="description"
+    content="PICEE-PA is a vendor-neutral public-administration application profile connecting administrative authorization to technical authorization for AI-initiated actions through Policy, Identity, Capability, Execution and Evidence."
+  >
+
+  <meta name="author" content="Valerio Lombardi">
+
+  <link
+    rel="canonical"
+    href="https://valeriolombardi.github.io/governed-ai-pa/"
+  >
+
+  <!-- Scholarly metadata -->
+  <meta
+    name="citation_title"
+    content="PICEE-PA: Governed AI Execution for Public Administration"
+  >
+
+  <meta
+    name="citation_author"
+    content="Valerio Lombardi"
+  >
+
+  <meta
+    name="citation_publication_date"
+    content="2026/09/01"
+  >
+
+  <meta
+    name="citation_doi"
+    content="10.5281/zenodo.22229330"
+  >
+
+  <meta
+    name="citation_pdf_url"
+    content="https://raw.githubusercontent.com/valeriolombardi/governed-ai-pa/main/paper/PICEE-PA_Final_v1.0_IT.pdf"
+  >
+
+  <!-- Open Graph -->
+  <meta
+    property="og:title"
+    content="PICEE-PA — Governed AI Execution for Public Administration"
+  >
+
+  <meta
+    property="og:description"
+    content="A vendor-neutral public-administration application profile connecting administrative and technical authorization for AI-initiated actions."
+  >
+
+  <meta
+    property="og:type"
+    content="article"
+  >
+
+  <meta
+    property="og:url"
+    content="https://valeriolombardi.github.io/governed-ai-pa/"
+  >
+
+  <meta
+    property="article:published_time"
+    content="2026-09-01"
+  >
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+      color: #102a43;
+      background: #f7fafc;
+      line-height: 1.65;
+    }
+
+    .hero {
+      background: #102a43;
+      color: white;
+      padding: 64px 7%;
+    }
+
+    .hero-inner {
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    .hero .eyebrow {
+      margin: 0 0 10px 0;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      opacity: 0.85;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 66px);
+      line-height: 1.05;
+      margin: 0;
+    }
+
+    .hero h2 {
+      margin-top: 12px;
+      margin-bottom: 18px;
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 500;
+    }
+
+    .hero .chain {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .wrap {
+      max-width: 1050px;
+      margin: auto;
+      padding: 42px 6%;
+    }
+
+    h2 {
+      margin-top: 38px;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    h3 {
+      margin-top: 0;
+    }
+
+    .callout {
+      border-left: 5px solid #1f6feb;
+      background: #eaf2f8;
+      padding: 20px 22px;
+      font-weight: 650;
+      margin-bottom: 32px;
+      border-radius: 4px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #d9e2ec;
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .card p {
+      margin-bottom: 0;
+    }
+
+    .architecture {
+      background: white;
+      border: 1px solid #d9e2ec;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .architecture img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    a {
+      color: #1f6feb;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 7px;
+      border: 1px solid #1f6feb;
+      text-decoration: none;
+      font-weight: 650;
+      background: white;
+    }
+
+    .button.primary {
+      background: #1f6feb;
+      color: white;
+    }
+
+    .note {
+      border-left: 5px solid #2f855a;
+      background: #edfdf3;
+      padding: 18px 20px;
+      margin-top: 20px;
+      border-radius: 6px;
+    }
+
+    .doi-badge {
+      margin-top: 18px;
+    }
+
+    .doi-badge img {
+      height: 20px;
+    }
+
+    .author {
+      background: white;
+      border: 1px solid #d9e2ec;
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .disclaimer {
+      color: #52667a;
+      font-size: 0.88rem;
+    }
+
+    code {
+      background: #edf2f7;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    footer {
+      background: #eaf2f8;
+      color: #334e68;
+      padding: 26px 7%;
+      font-size: 0.9rem;
+    }
+
+    .footer-inner {
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    @media (max-width: 600px) {
+
+      .hero {
+        padding: 42px 6%;
+      }
+
+      .wrap {
+        padding: 30px 6%;
+      }
+
+      .links {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+        text-align: center;
+      }
+
+    }
+
+  </style>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "PICEE-PA: Governed AI Execution for Public Administration",
+    "name": "PICEE-PA: Governed AI Execution for Public Administration",
+    "description": "A vendor-neutral public-administration application profile connecting administrative authorization to technical authorization for AI-initiated actions through Policy, Identity, Capability, Execution and Evidence.",
+    "author": {
+      "@type": "Person",
+      "name": "Valerio Lombardi",
+      "sameAs": [
+        "https://orcid.org/0009-0006-3949-6228",
+        "https://github.com/valeriolombardi"
+      ]
+    },
+    "datePublished": "2026-09-01",
+    "version": "1.0.0",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.22229330"
+    },
+    "url": "https://valeriolombardi.github.io/governed-ai-pa/",
+    "sameAs": [
+      "https://doi.org/10.5281/zenodo.22229330",
+      "https://github.com/valeriolombardi/governed-ai-pa"
+    ],
+    "encoding": {
+      "@type": "MediaObject",
+      "contentUrl": "https://raw.githubusercontent.com/valeriolombardi/governed-ai-pa/main/paper/PICEE-PA_Final_v1.0_IT.pdf",
+      "encodingFormat": "application/pdf"
+    },
+    "keywords": [
+      "artificial intelligence",
+      "AI agents",
+      "public administration",
+      "AI governance",
+      "authorization",
+      "policy as code",
+      "auditability",
+      "interoperability",
+      "agent governance",
+      "public sector AI"
+    ]
+  }
+  </script>
+
+</head>
+
+
+<body>
+
+  <header class="hero">
+
+    <div class="hero-inner">
+
+      <p class="eyebrow">
+        INDEPENDENT DESIGN PROPOSAL · VERSION 1.0.0
+      </p>
+
+      <h1>
+        PICEE-PA
+      </h1>
+
+      <h2>
+        Governed AI Execution for Public Administration
+      </h2>
+
+      <p class="chain">
+        Policy → Identity → Capability → Execution → Evidence
+      </p>
+
+    </div>
+
+  </header>
+
+
+  <main class="wrap">
+
+    <div class="callout">
+      AI-generated intention is not authority to act.
+      Significant actions should be explicitly authorized,
+      bounded, enforceable and reconstructible.
+    </div>
+
+
+    <h2>Contribution</h2>
+
+    <p>
+      PICEE-PA does not claim to invent policy engines,
+      agent identity, sandboxing or audit.
+      It proposes a vendor-neutral public-administration
+      application profile that connects
+      <strong>administrative authorization</strong>
+      — purpose, process, delegation and accountability —
+      to
+      <strong>technical authorization</strong>
+      — identity, capability, policy enforcement and runtime controls —
+      for each AI-initiated action.
+    </p>
+
+
+    <h2>Architecture</h2>
+
+    <div class="architecture">
+
+      <img
+        src="assets/picee-pa-architecture.svg"
+        alt="PICEE-PA governed AI execution architecture showing Policy, Identity, Capability, Execution and Evidence"
+      >
+
+    </div>
+
+
+    <h2>Five layers</h2>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>Policy</h3>
+
+        <p>
+          Purpose, process, applicable rules,
+          constraints and risk.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>Identity</h3>
+
+        <p>
+          Requester, agent or workload,
+          sponsor and delegation chain.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>Capability</h3>
+
+        <p>
+          Bounded action, resource,
+          data scope and budgets.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>Execution</h3>
+
+        <p>
+          Fail-closed enforcement,
+          approvals, isolation and recovery.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>Evidence</h3>
+
+        <p>
+          Attributable policy decision,
+          actual action, outcome and provenance.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <h2>AEE and AEB</h2>
+
+    <p>
+      <strong>AEE — Administrative Execution Envelope</strong>
+      is the proposed structured pre-execution envelope
+      describing the administrative and technical authority
+      under which an AI-initiated action may be considered.
+    </p>
+
+    <p>
+      <strong>AEB — Administrative Evidence Bundle</strong>
+      is the proposed post-execution evidence package
+      supporting durable reconstruction of authorization,
+      execution, approvals, outcomes and provenance.
+    </p>
+
+
+    <h2>Downloads and citation</h2>
+
+    <div class="links">
+
+      <a
+        class="button primary"
+        href="https://raw.githubusercontent.com/valeriolombardi/governed-ai-pa/main/paper/PICEE-PA_Final_v1.0_IT.pdf"
+      >
+        Paper — Italian PDF
+      </a>
+
+      <a
+        class="button"
+        href="https://github.com/valeriolombardi/governed-ai-pa"
+      >
+        GitHub repository
+      </a>
+
+      <a
+        class="button"
+        href="https://doi.org/10.5281/zenodo.22229330"
+      >
+        Zenodo record
+      </a>
+
+    </div>
+
+
+    <div class="doi-badge">
+
+      <a
+        href="https://doi.org/10.5281/zenodo.22229330"
+      >
+
+        <img
+          src="https://zenodo.org/badge/DOI/10.5281/zenodo.22229330.svg"
+          alt="DOI 10.5281/zenodo.22229330"
+        >
+
+      </a>
+
+    </div>
+
+
+    <div class="note">
+
+      <strong>Permanent citation</strong>
+
+      <br><br>
+
+      Lombardi, V. (2026).
+      <em>
+        PICEE-PA: Governed AI Execution for Public Administration
+      </em>.
+      Version 1.0.0.
+      Zenodo.
+
+      <br>
+
+      DOI:
+      <a
+        href="https://doi.org/10.5281/zenodo.22229330"
+      >
+        10.5281/zenodo.22229330
+      </a>
+
+    </div>
+
+
+    <h2>Author</h2>
+
+    <div class="author">
+
+      <p>
+        <strong>Valerio Lombardi</strong>
+        · Computer Engineer
+        · Independent Researcher
+      </p>
+
+      <p>
+        ORCID:
+        <a
+          href="https://orcid.org/0009-0006-3949-6228"
+        >
+          0009-0006-3949-6228
+        </a>
+      </p>
+
+      <p class="disclaimer">
+        Independent personal research.
+        The views expressed are solely those of the author
+        and do not represent any organisation,
+        institution or employer.
+      </p>
+
+    </div>
+
+  </main>
+
+
+  <footer>
+
+    <div class="footer-inner">
+      © 2026 Valerio Lombardi ·
+      PICEE-PA v1.0.0 ·
+      DOI 10.5281/zenodo.22229330
+    </div>
+
+  </footer>
+
+</body>
+
+</html>
