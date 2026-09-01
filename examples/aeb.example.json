@@ -1,0 +1,33 @@
+{
+  "aeb_id": "aeb-demo-001",
+  "aee_id": "aee-demo-001",
+  "decision": "allow",
+  "reason_code": "approved_l2",
+  "approval": {
+    "approver": "role:case-supervisor",
+    "decision": "approved"
+  },
+  "execution": {
+    "tool": "case.add_internal_note",
+    "transaction_id": "tx-demo-481",
+    "side_effect": "synthetic-note-created"
+  },
+  "result": {
+    "status": "success",
+    "output_hash": "sha256:DEMO"
+  },
+  "provenance": [],
+  "recovery": {
+    "required": false
+  },
+  "versions": {
+    "policy": "1.0.0",
+    "model": "synthetic-model",
+    "tool_schema": "1.0"
+  },
+  "timestamps": {
+    "evaluated_at": "2026-09-01T12:00:00Z",
+    "executed_at": "2026-09-01T12:00:02Z"
+  },
+  "evidence_hash": "sha256:DEMO"
+}

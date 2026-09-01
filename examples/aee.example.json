@@ -1,0 +1,43 @@
+{
+  "aee_id": "aee-demo-001",
+  "correlation_id": "corr-demo-001",
+  "purpose": "synthetic-case-workflow",
+  "process": "case:DEMO-1042",
+  "requester": {
+    "id": "user:demo-17",
+    "type": "human"
+  },
+  "agent": {
+    "id": "agent:case-helper-01",
+    "sponsor": "role:service-owner"
+  },
+  "delegation": {
+    "scope": "case:DEMO-1042",
+    "max_depth": 0
+  },
+  "capability": {
+    "action": "case.add_internal_note",
+    "resource": "case:DEMO-1042",
+    "data_scope": [
+      "internal"
+    ],
+    "budget": {
+      "max_calls": 1
+    }
+  },
+  "action_class": "L2",
+  "approval": {
+    "required": true,
+    "role": "case-supervisor"
+  },
+  "policy": {
+    "id": "demo-case-policy",
+    "version": "1.0.0",
+    "sha256": "sha256:DEMO"
+  },
+  "versions": {
+    "model": "synthetic-model",
+    "tool_schema": "1.0"
+  },
+  "expires_at": "2026-09-01T15:00:00Z"
+}

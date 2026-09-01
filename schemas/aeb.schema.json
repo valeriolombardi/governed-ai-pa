@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://valeriolombardi.github.io/governed-ai-pa/schemas/aeb.schema.json",
+  "title": "PICEE-PA Administrative Evidence Bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "aeb_id",
+    "aee_id",
+    "decision",
+    "execution",
+    "timestamps"
+  ],
+  "properties": {
+    "aeb_id": {
+      "type": "string"
+    },
+    "aee_id": {
+      "type": "string"
+    },
+    "decision": {
+      "enum": [
+        "allow",
+        "deny",
+        "review",
+        "error"
+      ]
+    },
+    "reason_code": {
+      "type": "string"
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "recovery": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "versions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "timestamps": {
+      "type": "object",
+      "required": [
+        "evaluated_at"
+      ],
+      "properties": {
+        "evaluated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "executed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": true
+    },
+    "evidence_hash": {
+      "type": "string"
+    }
+  }
+}
