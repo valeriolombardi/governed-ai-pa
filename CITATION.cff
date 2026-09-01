@@ -1,16 +1,21 @@
 cff-version: 1.2.0
-message: "If you use PICEE-PA or its reference implementation, please cite this repository. A DOI will be added after the first Zenodo archive."
+message: "If you use PICEE-PA or its reference implementation, please cite this software using the DOI below."
 title: "PICEE-PA: Governed AI Execution for Public Administration"
 version: 1.0.0
+doi: "10.5281/zenodo.22229330"
+date-released: 2026-09-01
 type: software
+
 authors:
   - family-names: "Lombardi"
     given-names: "Valerio"
     orcid: "https://orcid.org/0009-0006-3949-6228"
+
 abstract: >-
   A vendor-neutral design proposal and public-administration application profile
   connecting administrative authorization to technical authorization for
   AI-initiated actions through Policy, Identity, Capability, Execution and Evidence.
+
 keywords:
   - artificial intelligence
   - AI agents
@@ -20,5 +25,6 @@ keywords:
   - policy as code
   - auditability
   - interoperability
+
 repository-code: "https://github.com/valeriolombardi/governed-ai-pa"
 url: "https://valeriolombardi.github.io/governed-ai-pa/"
