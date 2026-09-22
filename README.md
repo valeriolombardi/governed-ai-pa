@@ -1,6 +1,6 @@
 # PICEE-PA - Governed AI Execution for Public Administration
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22229330.svg)](https://doi.org/10.5281/zenodo.22229330)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22897999.svg)](https://doi.org/10.5281/zenodo.22897999)
 
 **Policy -> Identity -> Capability -> Execution -> Evidence**
 
