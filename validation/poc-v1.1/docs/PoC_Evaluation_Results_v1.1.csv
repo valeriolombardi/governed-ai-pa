@@ -1,0 +1,8 @@
+Scenario,Strong baseline,PICEE-PA,Interpretation
+Authorized action,ALLOW / executed,ALLOW / executed,Same authorization result; PICEE-PA additionally packages AEE/AEB and hash links.
+Wrong principal,DENY,DENY,No decision advantage demonstrated.
+Wrong AI agent,DENY,DENY,No decision advantage demonstrated.
+Expired capability,DENY,DENY,No decision advantage demonstrated.
+Wrong capability,DENY,DENY,No decision advantage demonstrated.
+Wrong action,DENY,DENY,No decision advantage demonstrated.
+Stale policy version,DENY,DENY,No decision advantage demonstrated.
