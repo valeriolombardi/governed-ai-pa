@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use PICEE-PA or its reference implementation, please cite this software using the DOI below."
 title: "PICEE-PA: Governed AI Execution for Public Administration"
 version: 1.0.0
-doi: "10.5281/zenodo.22229330"
+doi: "10.5281/zenodo.22897999"
 date-released: 2026-09-01
 type: software
 
