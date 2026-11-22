@@ -9,7 +9,7 @@ PICEE-PA is an independent, vendor-neutral **design proposal / public-administra
 Author: **Valerio Lombardi**  
 ORCID: **https://orcid.org/0009-0006-3949-6228**
 
-> Status: v1.0 design proposal. PICEE-PA is not a standard, certification, legal opinion, or compliance claim.
+> Status: v1.3 reference implementation & empirical validation (EU AI Act Reg. 2024/1689 Art. 14, Consiglio di Stato Sent. 8472/2019 non-exclusivity, CAD D.Lgs. 82/2005, AgID ModI / PDND). Open research and technical framework for public administration.
 
 ## Why PICEE-PA
 

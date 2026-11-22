@@ -1,5 +1,5 @@
 """
-PICEE-PA v1.2 Public Administration AI Governance Framework
+PICEE-PA v1.3 Public Administration AI Governance & Administrative Imputation Framework
 """
 
 from .models import (
@@ -19,8 +19,14 @@ from .enforcement import (
     sha256_canonical
 )
 from .ledger import PiceeEvidenceLedger
+from .interop import (
+    AdministrativeImputation,
+    ModIInteropEnvelope,
+    ConsiglioDiStatoValidator,
+    InteropGateway
+)
 
-__version__ = "1.2.0"
+__version__ = "1.3.0"
 __all__ = [
     "ActionClass",
     "Decision",
@@ -34,5 +40,9 @@ __all__ = [
     "PiceeEnforcementEngine",
     "PiceeEvidenceLedger",
     "canonical_json",
-    "sha256_canonical"
+    "sha256_canonical",
+    "AdministrativeImputation",
+    "ModIInteropEnvelope",
+    "ConsiglioDiStatoValidator",
+    "InteropGateway"
 ]

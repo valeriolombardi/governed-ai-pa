@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/valeriolombardi/governed-ai-pa/main/schemas/picee_interop_v1.3.json",
+  "title": "PICEE-PA Administrative Interoperability & Imputation Schema v1.3",
+  "description": "Standardized schema for AgID ModI / PDND administrative interoperability and legal imputation under L. 241/1990, CAD D.Lgs. 82/2005, and EU AI Act (Reg. 2024/1689 Art. 14).",
+  "type": "object",
+  "properties": {
+    "message_id": {
+      "type": "string",
+      "pattern": "^urn:modi:pa:[a-zA-Z0-9_-]+:[a-zA-Z0-9-]+$"
+    },
+    "issuer_ipa": {
+      "type": "string",
+      "minLength": 3
+    },
+    "target_ipa": {
+      "type": "string",
+      "minLength": 3
+    },
+    "action_class": {
+      "type": "string",
+      "enum": ["L0", "L1", "L2", "L3"]
+    },
+    "merkle_evidence_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "imputation_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "security_pattern": {
+      "type": "string",
+      "enum": ["INTEGRITY_REST_01", "AUDIT_REST_02"]
+    },
+    "audit_proof": {
+      "type": "object",
+      "required": ["aeb_id", "aee_id", "chain_index", "decision", "imputation"],
+      "properties": {
+        "aeb_id": { "type": "string" },
+        "aee_id": { "type": "string" },
+        "chain_index": { "type": "integer", "minimum": 0 },
+        "decision": { "type": "string", "enum": ["ALLOW", "DENY", "REVIEW"] },
+        "execution_status": { "type": "string" },
+        "timestamps": { "type": "object" },
+        "imputation": {
+          "type": "object",
+          "required": ["imputation_id", "rup_name", "rup_tax_code", "office_code", "digital_signature_token", "is_exclusive_algorithmic_decision"],
+          "properties": {
+            "imputation_id": { "type": "string" },
+            "rup_name": { "type": "string" },
+            "rup_tax_code": { "type": "string", "minLength": 16, "maxLength": 16 },
+            "office_code": { "type": "string" },
+            "administrative_role": { "type": "string" },
+            "digital_signature_token": { "type": "string", "minLength": 1 },
+            "is_exclusive_algorithmic_decision": { "type": "boolean", "const": false }
+          }
+        }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "message_id",
+    "issuer_ipa",
+    "target_ipa",
+    "merkle_evidence_hash",
+    "imputation_digest",
+    "security_pattern",
+    "audit_proof",
+    "created_at"
+  ],
+  "additionalProperties": false
+}
