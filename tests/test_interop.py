@@ -33,12 +33,12 @@ from src.picee.interop import (
 
 class TestAdministrativeInterop(unittest.TestCase):
     def setUp(self):
-        self.gateway = InteropGateway(ipa_code="c_f839", office_code="UOR_ICT_01")
+        self.gateway = InteropGateway(ipa_code="c_xxxx", office_code="UOR_DEMO_01")
         self.rup_imputation = self.gateway.create_imputation(
-            rup_name="Valerio Lombardi",
-            rup_tax_code="LMBVLR80A01F839X",
+            rup_name="Mario Rossi",
+            rup_tax_code="RSSMRA80A01H501U",
             administrative_role="Responsabile Unico del Progetto (RUP)",
-            digital_signature_token="eIDAS.QES.SHA256.valid_detached_signature_token_2026",
+            digital_signature_token="eIDAS.QES.SHA256.valid_detached_signature_token_demo",
             is_exclusive=False,
         )
 
@@ -46,13 +46,13 @@ class TestAdministrativeInterop(unittest.TestCase):
             aee_id="aee_test_interop_001",
             purpose="Liquidazione stato di avanzamento lavori SAL 2 fornitura cloud",
             legal_framework=["L. 241/1990 Art. 3", "D.Lgs. 36/2023 Art. 114", "CAD Art. 12"],
-            requester={"id": "user_valerio", "role": "RUP", "organizational_unit": "UOR_ICT"},
+            requester={"id": "user_demo", "role": "RUP", "organizational_unit": "UOR_DEMO"},
             ai_agent={"id": "agent_procurement_01", "model": "gemini-2.5-flash", "runtime_hash": "sha256:abc123runtime"},
             delegation_chain=[
                 DelegationLink(
                     delegator_id="dirigente_apicale_01",
                     delegator_role="Direttore Generale",
-                    delegatee_id="user_valerio",
+                    delegatee_id="user_demo",
                     delegatee_role="RUP",
                     granted_capabilities=["procurement.payment.sal"],
                     max_budget=50000.0,
@@ -64,9 +64,9 @@ class TestAdministrativeInterop(unittest.TestCase):
             approval=Approval(
                 required=True,
                 approval_id="appr_001",
-                approver_id="user_valerio",
+                approver_id="user_demo",
                 approver_role="RUP",
-                signature="qes_signature_valerio_2026_valid",
+                signature="qes_signature_demo_valid",
                 approved_at=datetime.now(timezone.utc).isoformat(),
             ),
             policy=PolicyReference(
@@ -88,9 +88,9 @@ class TestAdministrativeInterop(unittest.TestCase):
         """Violation of Consiglio di Stato 8472/2019: Exclusive algorithmic decision must be rejected."""
         exclusive_imputation = AdministrativeImputation(
             imputation_id="imp_exclusive_01",
-            rup_name="Valerio Lombardi",
-            rup_tax_code="LMBVLR80A01F839X",
-            office_code="UOR_ICT_01",
+            rup_name="Mario Rossi",
+            rup_tax_code="RSSMRA80A01H501U",
+            office_code="UOR_DEMO_01",
             administrative_role="RUP",
             digital_signature_token="sig_test",
             is_exclusive_algorithmic_decision=True,  # VIOLATION: Agent acting without human oversight
@@ -102,12 +102,12 @@ class TestAdministrativeInterop(unittest.TestCase):
         self.assertTrue(any("Strict prohibition of exclusive algorithmic decisions" in v for v in violations))
 
     def test_03_missing_digital_signature_rejected_cad_art24(self):
-        """Violation of CAD Art. 24: Imputation lacking digital signature token must fail."""
+        """Structural validation: Imputation envelope lacking mandatory digital signature token must fail closed."""
         unsigned_imputation = AdministrativeImputation(
             imputation_id="imp_unsigned_01",
-            rup_name="Valerio Lombardi",
-            rup_tax_code="LMBVLR80A01F839X",
-            office_code="UOR_ICT_01",
+            rup_name="Mario Rossi",
+            rup_tax_code="RSSMRA80A01H501U",
+            office_code="UOR_DEMO_01",
             administrative_role="RUP",
             digital_signature_token="",  # Empty signature
             is_exclusive_algorithmic_decision=False,
@@ -161,15 +161,15 @@ class TestAdministrativeInterop(unittest.TestCase):
             target_ipa="r_campan",
         )
 
-        self.assertEqual(modi_env.issuer_ipa, "c_f839")
+        self.assertEqual(modi_env.issuer_ipa, "c_xxxx")
         self.assertEqual(modi_env.target_ipa, "r_campan")
         self.assertEqual(modi_env.security_pattern, "INTEGRITY_REST_01")
         self.assertEqual(modi_env.imputation_digest, self.rup_imputation.compute_legal_hash())
 
         json_out = modi_env.to_json_modi()
         self.assertIn("INTEGRITY_REST_01", json_out)
-        self.assertIn("Valerio Lombardi", json_out)
-        self.assertIn("c_f839", json_out)
+        self.assertIn("Mario Rossi", json_out)
+        self.assertIn("c_xxxx", json_out)
 
 
 if __name__ == "__main__":
